@@ -1,0 +1,126 @@
+.certification {
+  padding-top: 152px;
+  min-height: 100vh;
+  border-bottom: none;
+}
+
+.cert-carousel {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+}
+
+.cert-arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--bg-panel);
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.cert-arrow:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.cert-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  overflow: hidden;
+}
+
+.cert-card {
+  border: 1px solid var(--line);
+  background: var(--bg-panel);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.cert-card--side {
+  opacity: 0.45;
+  transform: scale(0.94);
+  cursor: pointer;
+}
+
+.cert-card--active {
+  border-color: var(--amber);
+}
+
+.cert-card__photo {
+  aspect-ratio: 3 / 4;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.cert-card__body {
+  padding: 20px;
+}
+
+.cert-card__title {
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.cert-card__issuer {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.cert-card__year {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+}
+
+.cert-dots {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cert-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--line);
+  cursor: pointer;
+}
+
+.cert-dot--active {
+  background: var(--amber);
+}
+
+@media (max-width: 760px) {
+  .certification {
+    padding-top: 116px;
+  }
+
+  .cert-track {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-card--side {
+    display: none;
+  }
+
+  .cert-arrow {
+    width: 40px;
+    height: 40px;
+  }
+}

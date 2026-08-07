@@ -1,0 +1,145 @@
+.experience {
+  padding-top: 152px;
+  min-height: 100vh;
+  border-bottom: none;
+}
+
+.experience__layout {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.experience__detail {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--amber);
+  padding: 28px;
+  position: sticky;
+  top: 96px;
+}
+
+.experience__detail-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.experience__role-tabs {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.experience__role-tab {
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+  font-family: var(--font-body);
+  font-size: 13px;
+  padding: 10px 12px;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.experience__role-tab--active {
+  border-color: var(--amber);
+  color: var(--text);
+}
+
+.experience__detail-body {
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.experience__detail-role {
+  font-size: 20px;
+}
+
+.experience__detail-company {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.experience__detail-period {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--amber);
+}
+
+.experience__detail-list {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.experience__detail-list li {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-dim);
+  padding-left: 16px;
+  position: relative;
+}
+
+.experience__detail-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background: var(--amber);
+}
+
+.experience__photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.experience__photo {
+  aspect-ratio: 1;
+}
+
+.experience__see-more {
+  margin-top: 24px;
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  .experience__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .experience__detail {
+    position: static;
+  }
+
+  .experience__photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .experience {
+    padding-top: 116px;
+  }
+
+  .experience__photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

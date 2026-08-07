@@ -1,32 +1,62 @@
-# React + TypeScript + Vite
+# Portfolio — Narongsak Wongwuen
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React + TypeScript + Vite portfolio site, built as a multi-page app
+(Home / About Me / Certification / Experience) matching the hand-sketched
+wireframes. Theme: dark "equipment nameplate / blueprint" look — amber
+safety accent, condensed industrial headers, monospace data readouts.
 
-Currently, two official plugins are available:
+## แก้ไขเนื้อหา (Edit content)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+เนื้อหาทั้งหมด (ชื่อ, สรุป, ทักษะ, ประสบการณ์, ใบรับรอง) อยู่ในไฟล์เดียว:
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```
+src/data.ts
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+แก้ไขค่าตรงนั้นได้เลย ไม่ต้องแตะไฟล์ component
+
+## รูปภาพ (Photos)
+
+ตอนนี้ทุกจุดที่ควรมีรูป (หน้า Home, About, Experience, Certification) ใช้
+placeholder สีเทาลายเส้นแทนไว้ก่อน (component `PhotoSlot`). วิธีใส่รูปจริง:
+
+1. วางไฟล์รูปในโฟลเดอร์ `public/photos/` เช่น `public/photos/me-01.jpg`
+2. ในไฟล์หน้านั้น ๆ เปลี่ยน `<PhotoSlot label="..." />` เป็น
+   `<PhotoSlot label="..." src="/photos/me-01.jpg" />`
+
+## เรซูเม่ (Resume)
+
+ปุ่ม "Download Resume" ลิงก์ไปที่ `/resume.pdf` — วางไฟล์ PDF ของคุณไว้ที่
+`public/resume.pdf` (ชื่อไฟล์ต้องตรงกัน) หรือแก้ path ที่ `profile.resumeFile`
+ใน `src/data.ts`
+
+## รันตอนพัฒนา (Local dev)
+
+```bash
+cd portfolio
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+npm run preview   # ทดสอบ build ก่อนขึ้นจริง
+```
+
+## Deploy ขึ้น GitHub Pages
+
+โปรเจกต์นี้มี GitHub Actions workflow (`.github/workflows/deploy.yml`) ที่
+build และ deploy อัตโนมัติทุกครั้งที่ push เข้า branch `main`
+
+ขั้นตอนตั้งค่าครั้งแรก:
+
+1. Push โค้ดนี้ขึ้น repo `art123-th/portfolio` branch `main`
+2. ไปที่ repo → **Settings → Pages** → ตั้งค่า **Source** เป็น
+   **GitHub Actions**
+3. push ครั้งถัดไป site จะ build และ deploy ให้เองที่
+   `https://art123-th.github.io/portfolio/`
+
+> **สำคัญ:** ถ้าเปลี่ยนชื่อ repo ต้องแก้ค่า `base` ใน `vite.config.ts`
+> ให้ตรงกับชื่อ repo ใหม่ (เช่น `/repo-name/`) ไม่งั้น CSS/JS จะโหลดไม่ขึ้น

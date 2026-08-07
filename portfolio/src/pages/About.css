@@ -1,0 +1,129 @@
+.about {
+  padding-top: 152px;
+  border-bottom: none;
+}
+
+.about__title {
+  margin-top: 10px;
+}
+
+.about__top {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 32px;
+  align-items: stretch;
+}
+
+.about__photo {
+  min-height: 420px;
+}
+
+.about__summary-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--amber);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about__summary-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.about__summary-text {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.about__cards {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.about-card {
+  background: var(--bg-panel);
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+}
+
+.about-card__label {
+  font-family: var(--font-display);
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.about-card__list {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.about-card__list li {
+  font-size: 14px;
+  color: var(--text-dim);
+  padding-left: 14px;
+  position: relative;
+}
+
+.about-card__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background: var(--amber);
+}
+
+.about-card__muted {
+  color: var(--text-faint);
+}
+
+.about-card__btn {
+  margin-top: 22px;
+  align-self: flex-start;
+}
+
+.about__footer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 860px) {
+  .about {
+    padding-top: 116px;
+  }
+
+  .about__top,
+  .about__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .about__footer {
+    justify-content: stretch;
+  }
+
+  .about__footer .btn {
+    width: 100%;
+  }
+}
