@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
 import PhotoSlot from "../components/PhotoSlot";
 import { profile, skills, experience, certifications } from "../data";
 import "./About.css";
 
+function scrollTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+}
+
 function About() {
   return (
-    <section className="section about">
+    <section id="about" className="section about">
       <div className="container">
         <p className="eyebrow">About Me</p>
         <h1 className="section-title about__title">{profile.name}</h1>
@@ -20,16 +23,31 @@ function About() {
         </div>
 
         <div className="about__cards">
-          <div className="about-card">
+          <div className="about-card about-card--wide">
             <span className="about-card__label">Skill</span>
-            <ul className="about-card__list">
-              {[...skills.machine, ...skills.technical].slice(0, 5).map((s) => (
-                <li key={s}>{s}</li>
-              ))}
-            </ul>
-            <Link to="/skills" className="btn btn-outline about-card__btn">
-              Full Skill
-            </Link>
+
+            <div className="about-card__skill-groups">
+              <div>
+                <span className="about-card__skill-group-title">Machine</span>
+                <div className="about-card__tags">
+                  {skills.machine.map((s) => (
+                    <span className="about-card__tag" key={s}>
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <span className="about-card__skill-group-title">Technical</span>
+                <div className="about-card__tags">
+                  {skills.technical.map((s) => (
+                    <span className="about-card__tag" key={s}>
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="about-card">
@@ -41,21 +59,21 @@ function About() {
                 </li>
               ))}
             </ul>
-            <Link to="/experience" className="btn btn-outline about-card__btn">
+            <button className="btn btn-outline about-card__btn" onClick={() => scrollTo("experience")}>
               Full Detail
-            </Link>
+            </button>
           </div>
 
           <div className="about-card">
             <span className="about-card__label">Certification</span>
             <ul className="about-card__list">
-              {certifications.slice(0, 3).map((c) => (
+              {certifications.map((c) => (
                 <li key={c.title}>{c.title}</li>
               ))}
             </ul>
-            <Link to="/certification" className="btn btn-outline about-card__btn">
+            <button className="btn btn-outline about-card__btn" onClick={() => scrollTo("certification")}>
               View
-            </Link>
+            </button>
           </div>
         </div>
 

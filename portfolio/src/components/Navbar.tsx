@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
-const LINKS = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About Me" },
-  { to: "/certification", label: "Certification" },
-  { to: "/experience", label: "Experience" },
+const SECTIONS = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About Me" },
+  { id: "certification", label: "Certification" },
+  { id: "experience", label: "Experience" },
 ];
 
 function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("home");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -20,27 +20,57 @@ function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Scrollspy: whichever section covers the middle of the viewport wins.
+  useEffect(() => {
+    const elements = SECTIONS.map((s) => document.getElementById(s.id)).filter(
+      (el): el is HTMLElement => el !== null,
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      {
+        // Trigger when a section crosses the vertical center of the screen,
+        // accounting for the fixed nav bar height.
+        rootMargin: "-40% 0px -55% 0px",
+        threshold: 0,
+      },
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  const handleClick = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setActive(id);
+    setOpen(false);
+  };
+
   return (
     <header className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
       <div className="nav__inner container">
-        <NavLink to="/" className="nav__mark" onClick={() => setOpen(false)}>
+        <a href="#home" className="nav__mark" onClick={(e) => handleClick(e, "home")}>
           <span className="nav__mark-bolt" aria-hidden="true" />
           NW<span className="nav__mark-dim">-01</span>
-        </NavLink>
+        </a>
 
         <nav className={`nav__links ${open ? "nav__links--open" : ""}`}>
-          {LINKS.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.to === "/"}
-              className={({ isActive }) =>
-                `nav__link ${isActive ? "nav__link--active" : ""}`
-              }
-              onClick={() => setOpen(false)}
+          {SECTIONS.map((s) => (
+            <a
+              key={s.id}
+              href={`#${s.id}`}
+              className={`nav__link ${active === s.id ? "nav__link--active" : ""}`}
+              onClick={(e) => handleClick(e, s.id)}
             >
-              {link.label}
-            </NavLink>
+              {s.label}
+            </a>
           ))}
         </nav>
 

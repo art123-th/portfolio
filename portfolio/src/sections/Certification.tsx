@@ -17,7 +17,7 @@ function Certification() {
   }));
 
   return (
-    <section className="section certification">
+    <section id="certification" className="section certification">
       <div className="container">
         <p className="eyebrow">Certification</p>
         <h1 className="section-title">Issued Credentials</h1>

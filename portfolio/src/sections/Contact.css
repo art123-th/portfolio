@@ -1,0 +1,39 @@
+.contact {
+  padding-top: 96px;
+  border-bottom: none;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 48px;
+}
+
+.contact__row {
+  font-size: 16px;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.contact__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  display: inline-block;
+  width: 70px;
+}
+
+.contact__actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 860px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,7 +1,5 @@
 .experience {
-  padding-top: 152px;
-  min-height: 100vh;
-  border-bottom: none;
+  padding-top: 96px;
 }
 
 .experience__layout {
@@ -135,10 +133,6 @@
 }
 
 @media (max-width: 640px) {
-  .experience {
-    padding-top: 116px;
-  }
-
   .experience__photo-grid {
     grid-template-columns: repeat(2, 1fr);
   }

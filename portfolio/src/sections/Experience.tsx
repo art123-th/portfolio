@@ -13,7 +13,7 @@ function Experience() {
   const photos = showAllPhotos ? jobPhotos : jobPhotos.slice(0, INITIAL_PHOTO_COUNT);
 
   return (
-    <section className="section experience">
+    <section id="experience" className="section experience">
       <div className="container">
         <p className="eyebrow">Experience</p>
         <h1 className="section-title">Work History</h1>
